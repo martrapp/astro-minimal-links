@@ -1,12 +1,11 @@
 ---
-import Body from "../components/Body.astro"
+import HeadElements from "../components/HeadElements.astro";
+import BodyElements from "../components/BodyElements.astro";
 ---
+
 <html style="scroll-padding-top: 50px">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Page 2</title>
+    <HeadElements a="2" />
   </head>
-  <Body a="2" b="1" c="4" d="3"/>
+  <body><BodyElements a="2" b="1" c="4" d="3" /></body>
 </html>
