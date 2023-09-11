@@ -1,0 +1,14 @@
+---
+import HeadElements from "../components/HeadElements.astro";
+import { ViewTransitions } from "astro:transitions";
+---
+
+<html style="scroll-padding-top: 50px">
+  <head>
+    <HeadElements a="Details" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <h1 transition:name="title">Details</h1>
+  </body>
+</html>

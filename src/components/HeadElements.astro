@@ -11,8 +11,6 @@ const { a } = Astro.props;
 <title>{`Page ${a}`}</title>
 <style>
   html {
-    font-family: sans-serif;
-    line-height: 1.5;
     scroll-behavior: smooth;
   }
 </style>
@@ -20,8 +18,12 @@ const { a } = Astro.props;
   window.addEventListener("scrollend", () =>
     console.log("scrollend: ", scrollY)
   );
-  const b: HTMLElement = document.querySelector("#b") as HTMLElement;
-  window.addEventListener("astro:beforeload", () => {
-    b.dataset.transitionName = "title";
-  });
+  let el = document.querySelector("#title")!;
+  window.addEventListener(
+    "beforeload",
+    () => (
+      (el["transition:name"] = "title"),
+      (el = document.querySelector("#title")!)
+    )
+  );
 </script>
