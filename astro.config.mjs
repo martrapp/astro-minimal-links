@@ -5,6 +5,11 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap()],
+  redirects: {
+    "/redirect-page1": "http://google.com/",
+    "/redirect-page2": "/page2",
+    "/redirect-page3": "http://google.com/",
+    "/redirect-page4": "/page4",
+  },
 });

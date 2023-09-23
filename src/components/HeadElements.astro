@@ -18,12 +18,4 @@ const { a } = Astro.props;
   window.addEventListener("scrollend", () =>
     console.log("scrollend: ", scrollY)
   );
-  let el = document.querySelector("#title")!;
-  window.addEventListener(
-    "beforeload",
-    () => (
-      (el["transition:name"] = "title"),
-      (el = document.querySelector("#title")!)
-    )
-  );
 </script>
