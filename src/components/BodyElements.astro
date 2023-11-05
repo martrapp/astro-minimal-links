@@ -8,7 +8,7 @@ interface Props {
 const { a, b, c, d } = Astro.props;
 ---
 
-<p
+<p transition:animate="slide"
   style="position: fixed; top:0; height: 50px; background-color: skyblue; width: 100%; margin: 0; padding: 0"
 >
   Page {a}
@@ -38,7 +38,7 @@ window.localStorage.setItem('astro', 'astro');
   <a href={`/page${b}#right`}>right {b}</a><br />
   <a href={`/page${b}#undef`}>undef {b}</a><br />
 </p>
-<a id="title" href={`/detail`}>Detail {b}</a><br/>
+<a transition:name="title" id="title" href={`/detail`}>Detail {b}</a><img src="/fish.png" transition:name="fish" style="height: 1rem"/><br/>
 <a id="title" href={`/pageNotFound`}>404 {b}</a>
 <p>
   <a href={`/page${a}`}>Page {a}</a><br />

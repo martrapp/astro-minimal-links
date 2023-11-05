@@ -9,13 +9,23 @@ const { a } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <title>{`Page ${a}`}</title>
-<style>
+<style is:global>
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: initial;
+  }
+  html::view-transition-group(*) {
+    animation-duration: 0.8s;
   }
 </style>
 <script>
   window.addEventListener("scrollend", () =>
     console.log("scrollend: ", scrollY)
   );
+  // @ts-ignore
+  if (window.navigation) {
+    // @ts-ignore
+    navigation.addEventListener("navigate", (e:any) => {
+      console.log("navigate: ", e);
+    });
+  }
 </script>
