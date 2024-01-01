@@ -23,9 +23,25 @@ const { a } = Astro.props;
   );
   // @ts-ignore
   if (window.navigation) {
-    // @ts-ignore
-    navigation.addEventListener("navigate", (e:any) => {
+    const listener = (e: any) => {
       console.log("navigate: ", e);
-    });
+      const nav: NavigateEvent = e as NavigateEvent;
+      e.intercept({
+        async handler() {
+          console.log(
+            "window.navigation.transition.from :>> ",
+          // @ts-ignore
+            window.navigation.transition.from.url
+          );
+          const res = await fetch(new URL(nav.destination.url, location.href));
+          const text = await res.text();
+          window.document.documentElement.replaceWith(
+            new DOMParser().parseFromString(text, "text/html").documentElement
+          );
+        },
+      });
+    };
+    // @ts-ignore
+    //   navigation.addEventListener("navigate", listener);
   }
 </script>
